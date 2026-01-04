@@ -29,6 +29,7 @@ func main() {
 	first_len()
 	first_append()
 	first_cap()
+	how_generate_slice()
 }
 
 func first_len() {
@@ -99,4 +100,21 @@ func first_make() {
 	// これならappendを利用してもキャパオーバーしない
 	z = append(z, 10)
 	fmt.Println(z, len(z), cap(z))
+}
+
+func how_generate_slice() {
+	// 「スライスを大きくする回数を減らす」を目的にする
+
+	// nilのまま大きくならない可能性があるなら
+	var x []int
+	fmt.Println(x == nil)
+
+	// 固定長 or 初期値あり
+	data := []int{2, 4, 6, 8}
+	fmt.Println(data)
+
+	// 実行すればわかるが、描いてる時はわからない
+	// 1. バッファとしてスライスを使うときは長さ1以上
+	// 2. サイズが正確にわかる時はそのサイズを指定
+	// 3. それ以外の時は長さ0、キャパ指定 → appendによる拡張回数を減らす
 }
