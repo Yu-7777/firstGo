@@ -37,6 +37,8 @@ func main() {
 	convert_array_to_slice()
 	slice_copy()
 	string_rune_byte()
+	convert_to_string()
+	convert_from_string()
 }
 
 func first_len() {
@@ -261,4 +263,24 @@ func string_rune_byte() {
 	// lenを利用するとバイト長を取得できる
 	// 太陽の絵文字は3バイト
 	fmt.Println(len(s))
+}
+
+func convert_to_string() {
+	// rune, byteはstringに変換できるが、intを変換すると文字コードとなるため変換できない
+	// go vet の警告対象となる
+	var a rune = 'x'
+	var s string = string(a)
+	var b byte = 'y'
+	var s2 string = string(b)
+	fmt.Println(s)
+	fmt.Println(s2)
+}
+
+func convert_from_string() {
+	// 反対の変換も可能
+	var s string = "Hello, ☀"
+	var bs []byte = []byte(s)
+	var rs []rune = []rune(s)
+	fmt.Println(bs)
+	fmt.Println(rs)
 }
