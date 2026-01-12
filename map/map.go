@@ -98,4 +98,9 @@ func set_by_map() {
 
 func main() {
 	first_map()
+	map_literal()
+	read_and_write()
+	comma_ok_idiom()
+	delete_from_map()
+	set_by_map()
 }
